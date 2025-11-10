@@ -242,7 +242,6 @@ Aether Edge is built with a modern, microservices-oriented architecture:
 - **[Documentation](https://wiki.skygenesisenterprise.com)** - Comprehensive guides and references
 - **[GitHub Discussions](https://github.com/skygenesisenterprise/aether-edge/discussions)** - Community discussions
 - **[Discord Server](https://skygenesisenterprise.com/discord)** - Real-time chat support
-- **[Stack Overflow](https://stackoverflow.com/questions/tagged/pangolin)** - Technical Q&A
 
 ### Contributing
 - **[Contributing Guide](contributing.md)** - How to contribute to the project
@@ -270,10 +269,10 @@ Aether Edge is built with a modern, microservices-oriented architecture:
 ## 🔗 External Links
 
 ### Official Resources
-- **[Website](https://pangolin.net)** - Official project website
-- **[GitHub Repository](https://github.com/fosrl/pangolin)** - Source code repository
-- **[Docker Hub](https://hub.docker.com/r/fosrl/pangolin)** - Official Docker images
-- **[Package Registry](https://npmjs.com/package/@fosrl/pangolin)** - npm package
+- **[Website](https://skygenesisenterprise.com)** - Official project website
+- **[GitHub Repository](https://github.com/skygenesisenterprise/aether-edge)** - Source code repository
+- **[Docker Hub](https://hub.docker.com/r/skygenesisenterprise/aether-edge)** - Official Docker images
+- **[Package Registry](https://npmjs.com/package/@skygenesisenterprise/aether-edge)** - npm package
 
 ### Related Projects
 - **[WireGuard®](https://www.wireguard.com/)** - Fast, modern VPN
@@ -291,7 +290,7 @@ Aether Edge is built with a modern, microservices-oriented architecture:
 
 We welcome feedback on our documentation! If you find:
 
-- **Errors or inaccuracies** - Please [open an issue](https://github.com/fosrl/pangolin/issues/new?template=documentation.md)
+- **Errors or inaccuracies** - Please [open an issue](https://github.com/skygenesisenterprise/aether-edge/issues/new?template=documentation.md)
 - **Missing information** - Let us know what's unclear or incomplete
 - **Improvement suggestions** - Share your ideas for better documentation
 - **Translation contributions** - Help us translate docs to other languages
@@ -307,4 +306,4 @@ We welcome feedback on our documentation! If you find:
 
 **Thank you for choosing Aether Edge!** 🚀
 
-This documentation is continuously evolving. Check back regularly for updates and new content. For the most current information, visit our [online documentation](https://docs.pangolin.net).
+This documentation is continuously evolving. Check back regularly for updates and new content. For the most current information, visit our [online documentation](https://wiki.skygenesisenterprise.com).
