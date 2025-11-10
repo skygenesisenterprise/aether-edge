@@ -1,6 +1,6 @@
-# Commercial Use of API Service
+# Commercial Use of Aether Edge
 
-API Service is released under the **MIT Licence** [LICENCE](LICENSE)
+Aether Edge is released under the **Apache 2.0** [LICENCE](LICENSE)
 
 ## ✅ What You Can Do
 
@@ -11,16 +11,16 @@ API Service is released under the **MIT Licence** [LICENCE](LICENSE)
 
 You **must contact Sky Genesis Enterprise** and obtain a commercial license **if you plan to**:
 
-- Offer Company Website as a paid or free SaaS (Software-as-a-Service) product.
-- Bundle Company Website into a commercial product or platform.
-- Use Company Website in a business context without open-sourcing your modifications and dependencies (as required by AGPLv3).
-- Require a proprietary license or want to avoid the AGPLv3 copyleft obligations.
+- Offer Aether Edge as a paid or free SaaS (Software-as-a-Service) product.
+- Bundle Aether Edge into a commercial product or platform.
+- Use Aether Edge in a business context without open-sourcing your modifications and dependencies (as required by Apache 2.0).
+- Require a proprietary license or want to avoid the Apache 2.0 copyleft obligations.
 
 ## 🧾 Why a Commercial License?
 
 We want to support sustainable open-source development while offering flexibility to businesses. A commercial license:
 
-- Removes the copyleft obligations of AGPLv3.
+- Removes the copyleft obligations of Apache 2.0.
 - Allows proprietary modifications and closed SaaS usage.
 - Grants access to premium features (if available).
 - Includes professional support and onboarding options.
@@ -34,4 +34,4 @@ For commercial licensing, support, or enterprise inquiries, please contact:
 
 ---
 
-**Note:** Using Aether Mail in a commercial environment **without respecting the AGPLv3 terms or without a commercial license** may constitute a license violation.
+**Note:** Using Aether Mail in a commercial environment **without respecting the Apache 2.0 terms or without a commercial license** may constitute a license violation.

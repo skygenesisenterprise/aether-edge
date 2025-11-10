@@ -1,6 +1,6 @@
 # Pull Request
 
-Thank you for contributing to **API Service**!  
+Thank you for contributing to **Aether Edge**!  
 Please fill out the following information to help us review your changes effectively.
 
 ---
