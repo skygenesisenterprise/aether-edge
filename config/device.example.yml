@@ -1,0 +1,207 @@
+# =============================================================================
+# Aether Edge Device Configuration
+# Optimized for hardware deployment and embedded systems
+# =============================================================================
+
+app:
+  mode: device
+  dashboard_url: http://localhost:3002
+  log_level: info
+  device_id: "auto"  # Auto-generate or specify hardware ID
+
+# Device-specific settings
+device:
+  model: "aether-edge-device"
+  manufacturer: "Aether Edge"
+  firmware_version: "1.0.0"
+  capabilities:
+    - hardware-acceleration
+    - offline-mode
+    - embedded-database
+    - wireguard-support
+    - led-indicators
+    - watchdog
+  
+# Hardware acceleration settings
+hardware:
+  crypto_acceleration:
+    enabled: true
+    driver: "openssl"  # or "hardware-specific"
+  
+  watchdog:
+    enabled: true
+    timeout: 30s
+    action: "reboot"
+    
+  led_indicators:
+    power: "/sys/class/leds/power/brightness"
+    status: "/sys/class/leds/status/brightness"
+    network: "/sys/class/leds/network/brightness"
+    error: "/sys/class/leds/error/brightness"
+    
+  buttons:
+    reset: "/sys/class/gpio/reset/value"
+    wps: "/sys/class/gpio/wps/value"
+
+# Network configuration
+network:
+  auto_discovery: true
+  fallback_connectivity: true
+  wireguard:
+    enabled: true
+    port: 51820
+    interface: "wg0"
+    
+  ethernet:
+    dhcp: true
+    static_ip: null
+    gateway: null
+    dns: ["8.8.8.8", "1.1.1.1"]
+    
+  wifi:
+    enabled: false
+    ssid: null
+    password: null
+    country: "US"
+
+# Database configuration (SQLite for embedded devices)
+database:
+  type: sqlite
+  path: /opt/aether-edge/data/aether-edge.db
+  max_size: 100MB
+  backup_enabled: true
+  backup_interval: "24h"
+  backup_retention: 7
+
+# Storage configuration
+storage:
+  data_path: /opt/aether-edge/data
+  log_path: /opt/aether-edge/logs
+  config_path: /opt/aether-edge/config
+  max_log_size: 50MB
+  log_retention_days: 7
+  auto_cleanup: true
+
+# Security settings
+server:
+  secret: "CHANGE_THIS_IN_PRODUCTION"
+  session_timeout: 24h
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+    
+# Monitoring and health checks
+monitoring:
+  enabled: true
+  health_check_interval: 60s
+  metrics_port: 9090
+  prometheus:
+    enabled: true
+    path: "/metrics"
+    
+  alerts:
+    cpu_threshold: 80
+    memory_threshold: 80
+    disk_threshold: 85
+    temperature_threshold: 70
+
+# Update settings
+updates:
+  auto_update: false
+  check_interval: 24h
+  backup_before_update: true
+  rollback_on_failure: true
+  update_server: "https://updates.aether-edge.com/device"
+
+# Performance optimization
+performance:
+  max_connections: 100
+  connection_timeout: 30s
+  keep_alive: true
+  compression: true
+  cache_size: 64MB
+
+# Device management
+device_management:
+  remote_access:
+    enabled: true
+    port: 22
+    key_based_auth: true
+    
+  provisioning:
+    zero_touch: true
+    auto_register: true
+    discovery_server: "discovery.aether-edge.com"
+    
+  diagnostics:
+    auto_collect: true
+    upload_on_failure: true
+    include_logs: true
+    include_system_info: true
+
+# Flags for device mode
+flags:
+  require_email_verification: false
+  disable_signup_without_invite: true
+  disable_user_create_org: true
+  allow_raw_resources: true
+  enable_integration_api: true
+  enable_clients: true
+  enable_device_mode: true
+  enable_hardware_features: true
+  enable_offline_mode: true
+  enable_watchdog: true
+
+# Logging configuration
+logging:
+  level: "info"
+  format: "json"
+  outputs:
+    - type: "file"
+      path: "/opt/aether-edge/logs/aether-edge.log"
+      max_size: "10MB"
+      max_files: 5
+    - type: "console"
+      colored: true
+      
+  loggers:
+    - name: "device"
+      level: "debug"
+    - name: "network"
+      level: "info"
+    - name: "security"
+      level: "warn"
+
+# Backup configuration
+backup:
+  enabled: true
+  interval: "24h"
+  retention: 7
+  compression: true
+  encryption: true
+  destinations:
+    - type: "local"
+      path: "/opt/aether-edge/backups"
+    - type: "remote"
+      url: "https://backup.aether-edge.com/api/upload"
+      auth_header: "Bearer BACKUP_TOKEN"
+
+# Integration settings
+integrations:
+  mqtt:
+    enabled: false
+    broker: null
+    port: 1883
+    topics:
+      - "aether-edge/device/status"
+      - "aether-edge/device/metrics"
+      
+  modbus:
+    enabled: false
+    port: 502
+    slave_id: 1
+    
+  can_bus:
+    enabled: false
+    interface: "can0"
+    bitrate: 500000

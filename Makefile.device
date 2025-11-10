@@ -1,0 +1,134 @@
+# =============================================================================
+# Aether Edge Device Makefile
+# Simplify device build and deployment operations
+# =============================================================================
+
+.PHONY: help build-device deploy-device clean-device test-device package-device
+
+# Default target
+help:
+	@echo "Aether Edge Device Makefile"
+	@echo "=========================="
+	@echo ""
+	@echo "Available targets:"
+	@echo "  build-device     - Build device Docker image"
+	@echo "  deploy-device     - Deploy device on current hardware"
+	@echo "  package-device    - Create device deployment package"
+	@echo "  test-device       - Test device configuration"
+	@echo "  clean-device      - Clean device artifacts"
+	@echo "  setup-device      - Setup device environment"
+	@echo ""
+	@echo "Examples:"
+	@echo "  make build-device"
+	@echo "  make deploy-device"
+	@echo "  make package-device"
+
+# Build device Docker image
+build-device:
+	@echo "🔧 Building Aether Edge Device image..."
+	./scripts/build-device.sh latest docker.io/aetheredge
+
+# Deploy device on current hardware
+deploy-device:
+	@echo "🚀 Deploying Aether Edge Device..."
+	sudo ./scripts/device-deploy.sh aether-edge-device aetheredge/device:latest /opt/aether-edge
+
+# Create deployment package
+package-device:
+	@echo "📦 Creating device deployment package..."
+	npm run device:package
+
+# Test device configuration
+test-device:
+	@echo "🧪 Testing device configuration..."
+	npm run set:device
+	npm run build:pg
+	@echo "✅ Device configuration test passed"
+
+# Clean device artifacts
+clean-device:
+	@echo "🧹 Cleaning device artifacts..."
+	docker stop aether-edge-device 2>/dev/null || true
+	docker rm aether-edge-device 2>/dev/null || true
+	docker rmi aetheredge/device:latest 2>/dev/null || true
+	rm -rf dist/
+	@echo "✅ Cleanup completed"
+
+# Setup device environment
+setup-device:
+	@echo "⚙️ Setting up device environment..."
+	mkdir -p /opt/aether-edge/{data,logs,config,backups}
+	chown -R $${USER}:$${USER} /opt/aether-edge 2>/dev/null || true
+	@echo "✅ Device environment setup completed"
+
+# Quick development build
+dev-device:
+	@echo "🔥 Quick development build for device..."
+	npm run set:device
+	docker-compose -f docker-compose.device.yml up --build
+
+# Production deployment
+prod-device:
+	@echo "🏭 Production device deployment..."
+	npm run set:device
+	npm run build:pg
+	./scripts/build-device.sh latest docker.io/aetheredge
+	sudo ./scripts/device-deploy.sh aether-edge-device aetheredge/device:latest /opt/aether-edge --systemd
+
+# Multi-architecture build
+build-device-multi:
+	@echo "🌐 Building multi-architecture device image..."
+	./scripts/build-device.sh latest docker.io/aetheredge --package
+
+# Update running device
+update-device:
+	@echo "🔄 Updating running device..."
+	docker pull aetheredge/device:latest
+	docker stop aether-edge-device || true
+	docker rm aether-edge-device || true
+	sudo ./scripts/device-deploy.sh aether-edge-device aetheredge/device:latest /opt/aether-edge
+
+# Device health check
+health-device:
+	@echo "🏥 Checking device health..."
+	docker exec aether-edge-device /opt/aether-edge/scripts/device-health.sh || echo "Device not running"
+
+# View device logs
+logs-device:
+	@echo "📋 Viewing device logs..."
+	docker logs -f aether-edge-device
+
+# Device shell access
+shell-device:
+	@echo "🐚 Accessing device shell..."
+	docker exec -it aether-edge-device /bin/bash
+
+# Backup device data
+backup-device:
+	@echo "💾 Backing up device data..."
+	sudo tar -czf "aether-edge-backup-$$(date +%Y%m%d-%H%M%S).tar.gz" -C /opt/aether-edge data config
+
+# Restore device data
+restore-device:
+	@echo "🔄 Restoring device data..."
+	@read -p "Enter backup file path: " backup_file; \
+	sudo tar -xzf "$$backup_file" -C /opt/aether-edge
+	sudo docker restart aether-edge-device
+
+# Show device status
+status-device:
+	@echo "📊 Device Status:"
+	@echo "==============="
+	@if docker ps -q -f name=aether-edge-device | grep -q .; then \
+		echo "✅ Device is running"; \
+		docker ps -f name=aether-edge-device; \
+	else \
+		echo "❌ Device is not running"; \
+	fi
+	@echo ""
+	@echo "📁 Disk Usage:"
+	@du -sh /opt/aether-edge/* 2>/dev/null || echo "Device not installed"
+	@echo ""
+	@echo "🌐 Network:"
+	@echo "Dashboard: http://$$(hostname -I | awk '{print $$1}'):3002"
+	@echo "API: http://$$(hostname -I | awk '{print $$1}'):3000"

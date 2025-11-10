@@ -66,6 +66,34 @@ Traditional VPN solutions require complex configurations and lack granular acces
 - **WebSocket Integration** for real-time events and updates
 - **CLI Tools** for automation and scripting
 
+## 🏗️ Build Variants
+
+Aether Edge is available in multiple editions to suit different deployment needs:
+
+### 📦 **OSS Version**
+- **Open Source** - Apache 2.0 licensed
+- **Core Features** - Essential identity and access management
+- **Community Support** - Forum and documentation
+- **Self-Hosted** - Full control over your deployment
+
+### 🏢 **Enterprise Version**
+- **Commercial License** - Premium features and support
+- **Advanced Security** - Enhanced authentication and compliance
+- **Priority Support** - 24/7 enterprise support
+- **Multi-Tenant** - Advanced multi-organization features
+
+### ☁️ **SaaS Version**
+- **Cloud-Hosted** - Managed service with automatic updates
+- **Multi-Tenancy** - Isolated environments per organization
+- **Scalable Infrastructure** - Elastic scaling and high availability
+- **Pay-as-you-go** - Flexible pricing based on usage
+
+### 🔧 **Device Version**
+- **Hardware Integration** - Optimized for embedded devices and IoT
+- **Resource Efficient** - Low memory and CPU footprint
+- **Offline Mode** - Continue operating without internet connectivity
+- **Device Management** - Centralized device provisioning and monitoring
+
 ## 🏗️ Architecture
 
 Aether Edge is built with a modern, cloud-native architecture that scales from small teams to enterprise deployments:

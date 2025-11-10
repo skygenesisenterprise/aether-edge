@@ -38,6 +38,13 @@ Our documentation is organized into several key sections to help you find the in
 - **[Contributing Guidelines](contributing.md)** - How to contribute to the project
 - **[Architecture Overview](architecture.md)** - System architecture and design principles
 
+### Build Variants
+
+- **[OSS Version](oss.md)** - Open Source edition features and limitations
+- **[Enterprise Version](enterprise.md)** - Enterprise edition features and setup
+- **[SaaS Version](saas.md)** - SaaS deployment and multi-tenancy
+- **[Device Version](device.md)** - Hardware device integration and embedded deployment
+
 ### Reference
 
 - **[Configuration Reference](configuration-reference.md)** - Complete configuration options
