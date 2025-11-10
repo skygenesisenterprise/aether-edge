@@ -13,6 +13,7 @@ services:
     environment:
       - NODE_ENV=development
       - ENVIRONMENT=dev
+      - POSTGRES_CONNECTION_STRING=postgresql://postgres:password@postgres:5432/postgres
     volumes:
       # Mount source code for hot reload
       - ./src:/app/src
@@ -27,3 +28,29 @@ services:
       - ./eslint.config.js:/app/eslint.config.js
       - ./config:/app/config
     restart: "no"
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:17
+    container_name: dev_postgres_db
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: "no"
+
+  redis:
+    image: redis:latest
+    container_name: dev_redis_db
+    ports:
+      - "6380:6379"
+    restart: "no"
+
+volumes:
+  postgres_data:
