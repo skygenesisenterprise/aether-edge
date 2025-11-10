@@ -26,4 +26,4 @@ services:
       - ./postcss.config.mjs:/app/postcss.config.mjs
       - ./eslint.config.js:/app/eslint.config.js
       - ./config:/app/config
-    restart: no
+    restart: "no"
