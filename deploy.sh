@@ -137,8 +137,9 @@ build_images() {
     
     # Build with production arguments
     docker build \
+        -f Dockerfile.production \
         --build-arg BUILD="${BUILD_TYPE:-enterprise}" \
-        --build-arg DATABASE="${DATABASE_TYPE:-postgresql}" \
+        --build-arg DATABASE="${DATABASE_TYPE:-pg}" \
         -t aether-edge:production \
         .
     

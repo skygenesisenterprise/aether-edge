@@ -38,7 +38,7 @@ import {
     GetOrgSubscriptionResponse,
     GetOrgUsageResponse
 } from "@server/routers/billing/types";
-import { useTranslations } from "use-intl";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function GeneralPage() {

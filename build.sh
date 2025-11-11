@@ -19,7 +19,7 @@ IMAGE_NAME="aether-edge"
 IMAGE_TAG="latest"
 PUSH_TO_REGISTRY=false
 REGISTRY_URL=""
-DOCKERFILE="Dockerfile"
+DOCKERFILE="Dockerfile.production"
 BUILD_CONTEXT="."
 
 # Help function
@@ -187,7 +187,7 @@ build_image() {
     log_info "This may take several minutes..."
     
     # Build command
-    docker build \
+    DOCKER_BUILDKIT=0 docker build \
         "${BUILD_ARGS[@]}" \
         -f "$DOCKERFILE" \
         -t "$FULL_IMAGE_TAG" \

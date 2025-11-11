@@ -17,8 +17,8 @@ ENV DATABASE_TYPE=$DATABASE
 WORKDIR /app
 
 # Install dependencies first for better caching
-COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
+COPY package*.json pnpm-lock.yaml* ./
+RUN corepack enable pnpm && pnpm install && pnpm store prune
 
 # Copy source code
 COPY . .
@@ -56,10 +56,10 @@ RUN if [ "$BUILD" = "oss" ]; then \
 RUN case "$DATABASE" in \
     "pg") \
         echo "Generating PostgreSQL migrations" && \
-        npx drizzle-kit generate --dialect postgresql --schema ./server/db/pg/schema --out init ;; \
+        pnpm db:pg:generate ;; \
     "sqlite") \
         echo "Generating SQLite migrations" && \
-        npx drizzle-kit generate --dialect sqlite --schema ./server/db/sqlite/schema --out init ;; \
+        pnpm db:sqlite:generate ;; \
     *) \
         echo "Unsupported database: $DATABASE" && exit 1 ;; \
     esac
@@ -69,7 +69,7 @@ RUN mkdir -p dist
 
 # Build Next.js application
 RUN echo "Building Next.js application..." && \
-    npm run next:build
+    pnpm next:build
 
 # Build server bundle
 RUN echo "Building server bundle..." && \
@@ -87,7 +87,7 @@ RUN case "$DATABASE" in \
 
 # Build CLI tools
 RUN echo "Building CLI tools..." && \
-    npm run build:cli
+    pnpm build:cli
 
 # Verify build artifacts
 RUN echo "Verifying build artifacts..." && \
@@ -115,13 +115,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install only production dependencies
-RUN npm ci --omit=dev && npm cache clean --force
+RUN corepack enable pnpm && pnpm install --prod && pnpm store prune
 
 # Copy build artifacts from builder stage
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/init ./dist/init
+COPY --from=builder /app/server/migrations ./dist/init
 
 # Copy CLI wrapper and make executable
 COPY --from=builder /app/cli/wrapper.sh /usr/local/bin/pangctl
@@ -147,7 +147,7 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 EXPOSE 3000 3001 3002 3003
 
 # Default command
-CMD ["npm", "run", "start"]
+CMD ["pnpm", "start"]
 
 # Labels for metadata
 LABEL maintainer="Aether Edge Team" \

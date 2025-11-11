@@ -7,8 +7,9 @@ export * from './domain';
 export * from './generatedLicense';
 export * from './gerbil';
 export * from './license';
-export * from './newt';
-export * from './olm';
+// Use namespaces to avoid conflicts
+export * as NewtRouter from './newt';
+export * as OlmRouter from './olm';
 export * from './role';
 export * from './site';
 export * from './user';

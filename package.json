@@ -148,6 +148,7 @@
         "@types/crypto-js": "^4.2.2",
         "@types/express": "5.0.5",
         "@types/express-session": "^1.18.2",
+        "@types/http-errors": "2.0.4",
         "@types/jmespath": "^0.15.2",
         "@types/js-yaml": "4.0.9",
         "@types/jsonwebtoken": "^9.0.10",
