@@ -799,6 +799,7 @@
     "orgRequired": "L'organisation est requise",
     "error": "Erreur",
     "success": "Succès",
+    "Failed to filter logs": "Échec du filtrage des journaux",
     "orgPolicyAddedDescription": "Politique ajoutée avec succès",
     "orgPolicyUpdatedDescription": "Politique mise à jour avec succès",
     "orgPolicyDeletedDescription": "Politique supprimée avec succès",

@@ -177,5 +177,31 @@
             "react": "19.0.0",
             "react-dom": "19.0.0"
         }
+    },
+    "imports": {
+        "#dynamic/cleanup": "./server/cleanup.ts",
+        "#dynamic/license/*": "./server/license/*",
+        "#dynamic/routers/external": "./server/routers/external.ts",
+        "#dynamic/routers/internal": "./server/routers/internal.ts",
+        "#dynamic/routers/integration": "./server/routers/integration.ts",
+        "#dynamic/routers/ws": "./server/routers/ws/index.ts",
+        "#dynamic/routers/hybrid": "./server/routers/hybrid.ts",
+        "#dynamic/routers/billing/*": "./server/private/routers/billing/*",
+        "#dynamic/routers/certificates/*": "./server/routers/certificates/*",
+        "#dynamic/routers/gerbil/*": "./server/private/routers/gerbil/*",
+        "#dynamic/lib/billing": "./server/lib/billing/index.ts",
+        "#dynamic/lib/billing/*": "./server/private/lib/billing/*",
+        "#dynamic/lib/certificates": "./server/lib/certificates.ts",
+        "#dynamic/lib/certificates/*": "./server/private/lib/certificates/*",
+        "#dynamic/lib/exitNodes": "./server/lib/exitNodes/index.ts",
+        "#dynamic/lib/exitNodes/*": "./server/private/lib/exitNodes/*",
+        "#dynamic/lib/rateLimitStore": "./server/lib/rateLimitStore.ts",
+        "#dynamic/lib/logAccessAudit": "./server/lib/logAccessAudit.ts",
+        "#dynamic/lib/checkOrgAccessPolicy": "./server/lib/checkOrgAccessPolicy.ts",
+        "#dynamic/lib/resend": "./server/lib/resend.ts",
+        "#dynamic/lib/traefik": "./server/lib/traefik/index.ts",
+        "#dynamic/lib/traefik/*": "./server/private/lib/traefik/*",
+        "#dynamic/middlewares": "./server/private/middlewares/index.ts",
+        "#dynamic/middlewares/*": "./server/private/middlewares/*"
     }
 }
