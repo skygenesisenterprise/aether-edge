@@ -57,7 +57,7 @@ services:
     image: aether-edge:production
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.production
       target: runner
       args:
         BUILD: enterprise
