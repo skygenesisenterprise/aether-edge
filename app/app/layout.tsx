@@ -4,8 +4,8 @@ import { AuthProvider } from "@/context/JwtAuthContext";
 import { DashboardLayout } from "@/components/DashboardLayout";
 
 export const metadata: Metadata = {
-  title: "Aether Mailer",
-  description: "A modern, open-source email server built with Next.js",
+  title: "Aether Edge",
+  description: "Identity-based, multi-site remote access platform using WireGuard®",
 };
 
 export default function RootLayout({
