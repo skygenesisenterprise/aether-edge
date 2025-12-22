@@ -1,9 +1,0 @@
-{
-    "build_type": "enterprise",
-    "database": "pg",
-    "image": "aether-edge:test-build",
-    "build_time": "2025-11-11T15:37:06Z",
-    "git_commit": "15a8ca49f9618dbac52cc8d5aaa99dfba57e33ec",
-    "git_branch": "main",
-    "docker_version": "Docker version 28.2.2, build 28.2.2-0ubuntu1~24.04.1"
-}
